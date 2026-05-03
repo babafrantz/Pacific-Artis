@@ -1,65 +1,1253 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Pacific Artis | Reliability Engineer</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pacific Artis | Yusuf Oluwasola Omoloja – Reliability Engineer & AI Systems</title>
+  <meta name="description" content="Reliability Engineer, RCM2 Specialist, Digital Twin Expert and AI Agent Developer. 15+ years in mining and industrial asset management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0a1628;
+      --navy2:   #0f2040;
+      --steel:   #1a3a5c;
+      --gold:    #c8922a;
+      --gold2:   #e8b84b;
+      --cream:   #f5f0e8;
+      --white:   #ffffff;
+      --grey:    #8a9ab0;
+      --light:   #e8eef6;
+      --danger:  #c0392b;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,146,42,0.2);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold2); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.55rem 1.4rem;
+      border: none; cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 4rem;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; right: -10%; top: 10%; bottom: 10%;
+      width: 55%;
+      background: radial-gradient(ellipse at center, rgba(200,146,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(200,146,42,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 60% 50%, black 20%, transparent 70%);
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 40px; height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--grey);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-desc strong { color: var(--cream); font-weight: 500; }
+
+    .hero-stats {
+      display: flex; gap: 3rem; margin-bottom: 3rem;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 0.3rem;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1.2rem; align-items: center;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.9rem 2rem;
+      border: none; cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+
+    .btn-outline {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(200,146,42,0.4);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold2); transform: translateY(-2px); }
+
+    /* ── HERO RIGHT – CARD STACK ── */
+    .hero-visual {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 1rem;
+      padding-left: 4rem;
+    }
+
+    .info-card {
+      background: rgba(15,32,64,0.8);
+      border: 1px solid rgba(200,146,42,0.15);
+      padding: 1.4rem 1.8rem;
+      position: relative;
+      backdrop-filter: blur(8px);
+      animation: slideIn 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .info-card:nth-child(1) { animation-delay: 0.2s; }
+    .info-card:nth-child(2) { animation-delay: 0.35s; }
+    .info-card:nth-child(3) { animation-delay: 0.5s; }
+    .info-card:nth-child(4) { animation-delay: 0.65s; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--gold);
+    }
+
+    .card-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    .card-sub {
+      font-size: 0.82rem;
+      color: var(--grey);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SECTION BASE ── */
+    section { position: relative; z-index: 1; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block; width: 30px; height: 1px; background: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--grey);
+      max-width: 600px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--navy2); border-top: 1px solid rgba(200,146,42,0.1); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      top: -16px; left: -16px; right: 16px; bottom: 16px;
+      border: 1px solid rgba(200,146,42,0.3);
+      pointer-events: none;
+    }
+
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -16px; right: -16px; left: 16px; top: 16px;
+      background: rgba(200,146,42,0.06);
+      pointer-events: none;
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(20%) contrast(1.05);
+      position: relative; z-index: 1;
+    }
+
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--steel), var(--navy2));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+
+    .about-photo-placeholder span {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: rgba(200,146,42,0.3);
+    }
+
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      color: var(--grey);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .about-text p strong { color: var(--cream); font-weight: 500; }
+
+    .expertise-tags {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,146,42,0.3);
+      padding: 0.35rem 0.8rem;
+      background: rgba(200,146,42,0.05);
+    }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--navy); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 4rem;
+      background: rgba(200,146,42,0.1);
+    }
+
+    .service-card {
+      background: var(--navy);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-card:hover { background: var(--navy2); }
+
+    .service-card:hover .service-icon { color: var(--gold2); transform: scale(1.1); }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(200,146,42,0.08);
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      line-height: 1;
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      transition: color 0.3s, transform 0.3s;
+      color: var(--gold);
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--grey);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── AI AGENTS ── */
+    .ai-section {
+      background: var(--navy2);
+      border-top: 1px solid rgba(200,146,42,0.1);
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .ai-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+
+    .ai-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .agent-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .agent-card {
+      background: var(--navy);
+      border: 1px solid rgba(200,146,42,0.12);
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .agent-card:hover {
+      border-color: rgba(200,146,42,0.4);
+      transform: translateY(-3px);
+    }
+
+    .agent-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(200,146,42,0.08), rgba(15,32,64,0.8));
+      border-color: rgba(200,146,42,0.3);
+    }
+
+    .agent-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .agent-status {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+    }
+    .status-dot.live { background: #2ecc71; box-shadow: 0 0 6px #2ecc71; animation: pulse 2s infinite; }
+    .status-dot.soon { background: var(--gold); }
+    .status-dot.planned { background: var(--grey); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .agent-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .agent-desc {
+      font-size: 0.9rem;
+      color: var(--grey);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .agent-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: gap 0.2s;
+    }
+
+    .agent-link:hover { gap: 0.8rem; }
+
+    /* ── PhD ── */
+    .phd-section { background: var(--navy); }
+
+    .phd-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .phd-quote {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--gold);
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .phd-body {
+      font-size: 0.96rem;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .phd-body strong { color: var(--cream); font-weight: 500; }
+
+    .phd-sidebar { padding-top: 1rem; }
+
+    .phd-milestone {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(200,146,42,0.12);
+    }
+
+    .milestone-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .milestone-val {
+      font-size: 0.9rem;
+      color: var(--cream);
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--navy2);
+      border-top: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .form-input, .form-textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,146,42,0.2);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      padding: 0.8rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--gold);
+      background: rgba(200,146,42,0.04);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(138,154,176,0.5); }
+
+    .form-textarea { resize: vertical; min-height: 140px; }
+
+    .contact-info { padding-top: 0.5rem; }
+
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .contact-icon { font-size: 1.2rem; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; }
+
+    .contact-detail-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-detail-val {
+      font-size: 0.95rem;
+      color: var(--cream);
+    }
+
+    .contact-detail-val a { color: var(--cream); text-decoration: none; }
+    .contact-detail-val a:hover { color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050e1a;
+      border-top: 1px solid rgba(200,146,42,0.15);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--grey);
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 1.5rem; padding-top: 6rem; }
+      .hero-visual { padding-left: 0; margin-top: 3rem; }
+      .section-inner { padding: 4rem 1.5rem; }
+      .about-grid, .contact-grid, .phd-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .agent-cards { grid-template-columns: 1fr; }
+      .agent-card.featured { grid-column: span 1; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
 </head>
+<body>
 
-<body class="bg-gray-50 text-gray-800">
-  <!-- Navbar -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Yusuf Oluwasola Omoloja</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm font-medium">
-          <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-          <li><a href="profile_page.html" class="hover:text-blue-600">Profile</a></li>
-          <li><a href="Bussinness.html" class="hover:text-blue-600">Business</a></li>
-          <li><a href="Training.html" class="hover:text-blue-600">Training</a></li>
-          <li><a href="systems_engineering.html" class="hover:text-blue-600">Systems</a></li>
-          <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
-          <li><a href="Phd.html" class="hover:text-blue-600">PhD</a></li>
-          <li><a href="gallery.html" class="hover:text-blue-600">Gallery</a></li>
-          <li><a href="https://www.brotherstech-eng.com/" class="hover:text-blue-600">Brothers Tech Engineering</a></li>
-          <li><a href="C:\Users\yomol\OneDrive\Desktop\Desktop Copy all files here\My Website\Pacific_artis.html" class="hover:text-blue-600">Pacific Artis</a></li>
-        </ul>
-      </nav>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">PACIFIC ARTIS</a>
+    <ul class="nav-links">
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="#ai-agents">AI Agents</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Training.html">Training</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Enquire</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Reliability Engineer &amp; AI Systems Developer</div>
+
+      <h1 class="hero-name">YUSUF<br>OMOLOJA</h1>
+      <div class="hero-title">PACIFIC ARTIS</div>
+
+      <p class="hero-desc">
+        Bridging <strong>15+ years of industrial reliability engineering</strong>
+        with cutting-edge AI agent development. RCM2 specialist, digital twin
+        researcher, and builder of intelligent maintenance systems for the
+        mining and resources sector.
+      </p>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">RCM2</div>
+          <div class="stat-label">Moubray Certified</div>
+        </div>
+        <div>
+          <div class="stat-num">AI</div>
+          <div class="stat-label">Agent Developer</div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="Bussinness.html" class="btn-primary">View Services</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 bg-blue-100">
-    <h2 class="text-4xl font-bold mb-4">Welcome to My Digital Space</h2>
-    <p class="text-lg max-w-2xl mx-auto">I am a Reliability Engineer, Digital Twin Expert, Systems Engineer, and Writer. Explore my work, thoughts, and projects.</p>
+    <div class="hero-visual">
+      <div class="info-card">
+        <div class="card-label">Current Focus</div>
+        <div class="card-value">PhD Research – Mining Equipment Reliability</div>
+        <div class="card-sub">Hybrid edge-cloud digital twin framework</div>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Latest Build</div>
+        <div class="card-value">RCM2 FMEA AI Agent</div>
+        <div class="card-sub">Automated failure mode analysis · Outotec P0668 Thickener</div>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Expertise</div>
+        <div class="card-value">SAP PM · IBM Maximo · Digital Twins</div>
+        <div class="card-sub">Predictive Maintenance · Vibration · Oil Analysis</div>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Location</div>
+        <div class="card-value">Australia – Mining &amp; Resources Sector</div>
+        <div class="card-sub">Available globally for consulting engagements</div>
+      </div>
+    </div>
   </section>
 
-  <!-- Highlights -->
-  <section class="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
-    <div class="bg-white rounded-xl shadow p-6">
-      <h3 class="text-xl font-semibold mb-2">My Business</h3>
-      <p>Preventive and Predictive Maintenance, SAP/MAXIMO Consulting, Software Development, Digital Twin.</p>
-      <a href="Bussinness.html" class="text-blue-600 mt-2 inline-block">Read more →</a>
-    </div>
-    <div class="bg-white rounded-xl shadow p-6">
-      <h3 class="text-xl font-semibold mb-2">Blog</h3>
-      <p>Read my thoughts on Predictive Maintenance, Reliability, and Engineering Systems.</p>
-      <a href="blog.html" class="text-blue-600 mt-2 inline-block">Read more →</a>
-    </div>
-    <div class="bg-white rounded-xl shadow p-6">
-      <h3 class="text-xl font-semibold mb-2">PhD Progress</h3>
-      <p>Explore my journey as a PhD student researching scalable, hybrid reliability frameworks for mining equipment.</p>
-      <a href="Phd.html" class="text-blue-600 mt-2 inline-block">Read more →</a>
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <img
+            src="20250508_101054.jpg"
+            alt="Yusuf Oluwasola Omoloja"
+            class="about-photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="about-photo-placeholder" style="display:none;">
+            <span>YO</span>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <div class="section-label">About</div>
+          <h2>ENGINEER.<br>RESEARCHER.<br>BUILDER.</h2>
+
+          <p>
+            I am <strong>Yusuf Oluwasola Omoloja</strong>, a reliability engineer with over
+            15 years of hands-on experience in maintenance strategy development,
+            asset management systems, and digital transformation for industrial operations.
+          </p>
+
+          <p>
+            My career has been defined by a single question: <strong>how do we make
+            maintained assets more intelligent?</strong> From deploying SAP PM and
+            IBM Maximo for mining operations, to building AI agents that generate
+            rigorous RCM2 FMEAs in minutes, I sit at the intersection of
+            traditional engineering discipline and modern AI capability.
+          </p>
+
+          <p>
+            Currently pursuing a <strong>PhD focused on scalable hybrid reliability
+            frameworks</strong> that combine edge computing and cloud AI for
+            real-time equipment health monitoring in the mining sector.
+          </p>
+
+          <div class="expertise-tags">
+            <span class="tag">RCM2 – Moubray</span>
+            <span class="tag">SAP PM</span>
+            <span class="tag">IBM Maximo</span>
+            <span class="tag">Digital Twin</span>
+            <span class="tag">Predictive Maintenance</span>
+            <span class="tag">Vibration Analysis</span>
+            <span class="tag">Oil Analysis</span>
+            <span class="tag">Thermography</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">Django</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-6 mt-10 text-sm">
-    <p>&copy; 2025 Yusuf Oluwasola Omoloja. All rights reserved.</p>
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="section-inner">
+      <div class="section-label fade-up">Services</div>
+      <h2 class="section-title fade-up">WHAT I DELIVER</h2>
+      <p class="section-desc fade-up">
+        A full suite of reliability and digital services for mining,
+        resources, and industrial operations.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <span class="service-num">01</span>
+          <span class="service-icon">⚙️</span>
+          <div class="service-title">RCM2 & FMEA</div>
+          <p class="service-desc">
+            Rigorous Reliability Centred Maintenance analysis using
+            John Moubray's RCM2 methodology. Function-driven failure
+            analysis, consequence categorisation, and defensible
+            maintenance task selection — now AI-accelerated.
+          </p>
+        </div>
+
+        <div class="service-card fade-up">
+          <span class="service-num">02</span>
+          <span class="service-icon">📊</span>
+          <div class="service-title">Predictive Maintenance</div>
+          <p class="service-desc">
+            Designing and implementing predictive maintenance programmes
+            using vibration analysis, oil analysis, thermography, and
+            ultrasound. From condition monitoring strategy to SAP PM
+            integration.
+          </p>
+        </div>
+
+        <div class="service-card fade-up">
+          <span class="service-num">03</span>
+          <span class="service-icon">🗄️</span>
+          <div class="service-title">SAP PM & Maximo Consulting</div>
+          <p class="service-desc">
+            Customising, deploying, and training maintenance teams on
+            SAP Plant Maintenance and IBM Maximo. Functional location
+            structures, maintenance plans, work order management,
+            and KPI reporting.
+          </p>
+        </div>
+
+        <div class="service-card fade-up">
+          <span class="service-num">04</span>
+          <span class="service-icon">🤖</span>
+          <div class="service-title">AI Agent Development</div>
+          <p class="service-desc">
+            Building intelligent maintenance agents that automate FMEA
+            generation, dynamic risk scoring, and PM task management.
+            Powered by Claude API with domain-specific reliability
+            engineering knowledge encoded.
+          </p>
+        </div>
+
+        <div class="service-card fade-up">
+          <span class="service-num">05</span>
+          <span class="service-icon">🔄</span>
+          <div class="service-title">Digital Twin Deployment</div>
+          <p class="service-desc">
+            Developing digital representations of physical assets to
+            simulate performance, optimise maintenance planning, and
+            support real-time decision-making across mining and
+            industrial operations.
+          </p>
+        </div>
+
+        <div class="service-card fade-up">
+          <span class="service-num">06</span>
+          <span class="service-icon">🎓</span>
+          <div class="service-title">Training & Capability Building</div>
+          <p class="service-desc">
+            RCM2 methodology training, FMEA facilitation workshops,
+            SAP PM user training, and reliability engineering
+            upskilling programmes for maintenance teams in the
+            mining and resources sector.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI AGENTS -->
+  <section class="ai-section" id="ai-agents">
+    <div class="section-inner">
+      <div class="ai-header">
+        <div>
+          <div class="section-label fade-up">AI Products</div>
+          <h2 class="section-title fade-up">INTELLIGENT<br>MAINTENANCE AGENTS</h2>
+        </div>
+        <div class="fade-up" style="text-align:right;">
+          <p class="section-desc" style="max-width:320px;">
+            The next generation of reliability engineering — where domain expertise meets AI capability.
+          </p>
+        </div>
+      </div>
+
+      <div class="agent-cards">
+        <div class="agent-card featured fade-up">
+          <div class="agent-status">
+            <span class="status-dot live"></span>
+            <span style="color:#2ecc71;">Live – Available Now</span>
+          </div>
+          <div class="agent-name">RCM2 FMEA AGENT</div>
+          <p class="agent-desc">
+            Upload your SAP asset hierarchy and maintenance manual. The agent applies
+            John Moubray's RCM2 decision logic — consequence-first, task-selection second —
+            and generates a complete, formatted FMEA workbook with 64+ failure modes,
+            risk scoring, PM task register, and hidden failure identification.
+            What previously took 3–5 engineering days now takes minutes.
+          </p>
+          <a href="#contact" class="agent-link">Request Access →</a>
+        </div>
+
+        <div class="agent-card fade-up">
+          <div class="agent-status">
+            <span class="status-dot soon"></span>
+            <span style="color:var(--gold);">Coming Soon</span>
+          </div>
+          <div class="agent-name">DYNAMIC FMEA ENGINE</div>
+          <p class="agent-desc">
+            A living FMEA that connects to your SAP PM order history and
+            DCS historian. Risk scores update automatically as real failure
+            data comes in. Likelihood scores reflect your actual site
+            experience, not engineering estimates.
+          </p>
+          <a href="#contact" class="agent-link">Register Interest →</a>
+        </div>
+
+        <div class="agent-card fade-up">
+          <div class="agent-status">
+            <span class="status-dot planned"></span>
+            <span style="color:var(--grey);">In Development</span>
+          </div>
+          <div class="agent-name">MAINTENANCE WI GENERATOR</div>
+          <p class="agent-desc">
+            Auto-generate technician-ready Work Instructions from FMEA
+            records. ISO 9001 format with PPE requirements, step-by-step
+            procedures, acceptance criteria, and SAP equipment references.
+          </p>
+          <a href="#contact" class="agent-link">Register Interest →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHD -->
+  <section class="phd-section">
+    <div class="section-inner">
+      <div class="phd-inner">
+        <div>
+          <div class="section-label fade-up">Research</div>
+          <h2 class="section-title fade-up">PHD RESEARCH</h2>
+
+          <div class="phd-quote fade-up">
+            "A scalable hybrid reliability framework blending edge and cloud technologies for mining equipment."
+          </div>
+
+          <div class="phd-body fade-up">
+            <p>
+              My doctoral research addresses a fundamental problem in mining maintenance:
+              <strong>how do you build a reliability framework that works at the edge of
+              connectivity</strong> — in remote pit environments, underground operations,
+              and distributed plant configurations — while still leveraging the power of
+              cloud-based AI and digital twin technologies?
+            </p>
+            <p style="margin-top:1rem;">
+              The research combines <strong>RCM2 methodology</strong> as the analytical
+              foundation with <strong>machine learning</strong> for failure prediction,
+              <strong>edge computing</strong> for real-time condition monitoring, and
+              <strong>cloud synchronisation</strong> for fleet-wide pattern recognition.
+              The goal is a framework that is rigorous enough to satisfy regulatory
+              requirements and practical enough to work in the real conditions
+              of Australian mining operations.
+            </p>
+          </div>
+        </div>
+
+        <div class="phd-sidebar fade-up">
+          <div class="phd-milestone">
+            <div class="milestone-label">Research Area</div>
+            <div class="milestone-val">Mining Equipment Reliability</div>
+          </div>
+          <div class="phd-milestone">
+            <div class="milestone-label">Framework</div>
+            <div class="milestone-val">Hybrid Edge-Cloud Architecture</div>
+          </div>
+          <div class="phd-milestone">
+            <div class="milestone-label">Methods</div>
+            <div class="milestone-val">RCM2 · ML · Digital Twin · IoT</div>
+          </div>
+          <div class="phd-milestone">
+            <div class="milestone-label">Sector</div>
+            <div class="milestone-val">Mining &amp; Resources – Australia</div>
+          </div>
+          <div class="phd-milestone">
+            <div class="milestone-label">Blog</div>
+            <div class="milestone-val"><a href="blog.html" style="color:var(--gold); text-decoration:none;">Follow PhD Progress →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-inner">
+      <div class="section-label fade-up">Contact</div>
+      <h2 class="section-title fade-up">START A CONVERSATION</h2>
+      <p class="section-desc fade-up" style="margin-bottom:3.5rem;">
+        Whether you need RCM2 consulting, SAP PM implementation, AI agent
+        development, or simply want to discuss reliability engineering — get in touch.
+      </p>
+
+      <div class="contact-grid">
+        <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input class="form-input" type="text" id="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input class="form-input" type="text" id="subject" placeholder="RCM2 Consulting / AI Agent / General Enquiry" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" placeholder="Tell me about your maintenance challenge..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%; text-align:center;">Send Message</button>
+          <div id="form-msg" style="display:none; font-family:var(--font-mono); font-size:0.75rem; color:#2ecc71; letter-spacing:0.1em; text-transform:uppercase; margin-top:0.5rem;"></div>
+        </form>
+
+        <div class="contact-info fade-up">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <div class="contact-detail-label">Location</div>
+              <div class="contact-detail-val">Australia – Mining &amp; Resources Sector</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🌐</span>
+            <div>
+              <div class="contact-detail-label">Website</div>
+              <div class="contact-detail-val">
+                <a href="https://babafrantz.github.io/Pacific-Artis/">babafrantz.github.io/Pacific-Artis</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🔗</span>
+            <div>
+              <div class="contact-detail-label">LinkedIn</div>
+              <div class="contact-detail-val">
+                <a href="https://www.brotherstech-eng.com/" target="_blank">Brothers Tech Engineering</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✍️</span>
+            <div>
+              <div class="contact-detail-label">Blog</div>
+              <div class="contact-detail-val">
+                <a href="blog.html">Predictive Maintenance &amp; Reliability</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:2.5rem; padding:1.5rem; background:rgba(200,146,42,0.06); border:1px solid rgba(200,146,42,0.2);">
+            <div class="card-label" style="margin-bottom:0.8rem;">Consulting Availability</div>
+            <div style="font-size:0.9rem; color:var(--grey); line-height:1.7;">
+              Available for remote and on-site engagements across Australia.
+              Typical response within 24 hours.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      © 2026 Yusuf Oluwasola Omoloja · Pacific Artis · All Rights Reserved
+    </div>
+    <div class="footer-logo">PACIFIC ARTIS</div>
+    <ul class="footer-links">
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="Training.html">Training</a></li>
+    </ul>
   </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Contact form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const msg = document.getElementById('form-msg');
+      btn.textContent = 'Sending...';
+      btn.style.opacity = '0.7';
+      setTimeout(() => {
+        btn.textContent = 'Message Sent ✓';
+        btn.style.background = '#2ecc71';
+        msg.style.display = 'block';
+        msg.textContent = 'Thank you — I will respond within 24 hours.';
+        e.target.reset();
+      }, 1200);
+    }
+
+    // Nav active state on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+      });
+    });
+  </script>
+
 </body>
-
 </html>
-
