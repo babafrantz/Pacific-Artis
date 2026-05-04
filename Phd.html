@@ -1,79 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | PhD Progress</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pacific Artis | PhD Research – Yusuf Oluwasola Omoloja</title>
+  <meta name="description" content="PhD research on scalable hybrid reliability frameworks combining edge computing and cloud AI for mining equipment maintenance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0a1628; --navy2:#0f2040; --steel:#1a3a5c;
+      --gold:#c8922a; --gold2:#e8b84b; --cream:#f5f0e8;
+      --white:#ffffff; --grey:#8a9ab0;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-body:'DM Sans',sans-serif;
+      --font-mono:'DM Mono',monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:var(--font-body); background:var(--navy); color:var(--cream); overflow-x:hidden; line-height:1.6; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4rem; background:rgba(10,22,40,0.85); backdrop-filter:blur(12px); border-bottom:1px solid rgba(200,146,42,0.2); }
+    .nav-logo { font-family:var(--font-display); font-size:1.6rem; letter-spacing:0.08em; color:var(--gold); text-decoration:none; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--grey); text-decoration:none; transition:color 0.2s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transition:transform 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--gold2); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    .nav-cta { font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:0.55rem 1.4rem; text-decoration:none; transition:background 0.2s; clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%); }
+    .nav-cta:hover { background:var(--gold2); }
+
+    .page-hero { padding:10rem 4rem 5rem; position:relative; overflow:hidden; border-bottom:1px solid rgba(200,146,42,0.1); }
+    .page-hero::before { content:''; position:absolute; right:0; top:0; bottom:0; width:50%; background:radial-gradient(ellipse at right center,rgba(200,146,42,0.06) 0%,transparent 70%); pointer-events:none; }
+    .hero-grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(200,146,42,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,42,0.03) 1px,transparent 1px); background-size:60px 60px; }
+    .page-eyebrow { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:1rem; }
+    .page-eyebrow::before { content:''; display:block; width:30px; height:1px; background:var(--gold); }
+    .page-title { font-family:var(--font-display); font-size:clamp(4rem,8vw,7rem); letter-spacing:0.02em; color:var(--white); line-height:0.95; position:relative; z-index:1; }
+    .page-subtitle { font-size:1.1rem; color:var(--grey); margin-top:1.2rem; font-weight:300; max-width:700px; position:relative; z-index:1; }
+
+    .section-inner { max-width:1200px; margin:0 auto; padding:5rem 4rem; position:relative; z-index:1; }
+    .section-label { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; display:flex; align-items:center; gap:0.8rem; }
+    .section-label::before { content:''; display:block; width:24px; height:1px; background:var(--gold); }
+    .section-title { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3rem); letter-spacing:0.03em; color:var(--white); line-height:1; margin-bottom:1.2rem; }
+    .body-text { font-size:0.98rem; color:var(--grey); line-height:1.85; font-weight:300; margin-bottom:1rem; }
+    .body-text strong { color:var(--cream); font-weight:500; }
+    hr.divider { border:none; border-top:1px solid rgba(200,146,42,0.12); margin:3.5rem 0; }
+
+    /* Research overview grid */
+    .overview-grid { display:grid; grid-template-columns:2fr 1fr; gap:4rem; align-items:start; }
+
+    /* Key info sidebar */
+    .research-sidebar { display:flex; flex-direction:column; gap:0; }
+    .sidebar-card { background:rgba(15,32,64,0.6); border:1px solid rgba(200,146,42,0.12); padding:1.4rem; position:relative; margin-bottom:1rem; }
+    .sidebar-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--gold); }
+    .sidebar-label { font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem; }
+    .sidebar-val { font-size:0.9rem; color:var(--cream); }
+
+    /* Objectives */
+    .objectives-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+    .obj-card { background:rgba(15,32,64,0.5); border:1px solid rgba(200,146,42,0.1); padding:1.8rem 1.5rem; transition:border-color 0.3s; }
+    .obj-card:hover { border-color:rgba(200,146,42,0.35); }
+    .obj-num { font-family:var(--font-display); font-size:3rem; color:rgba(200,146,42,0.12); line-height:1; margin-bottom:0.5rem; }
+    .obj-title { font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+    .obj-desc { font-size:0.87rem; color:var(--grey); line-height:1.65; }
+
+    /* Milestones timeline */
+    .milestones { display:flex; flex-direction:column; gap:0; margin-top:2rem; }
+    .milestone { display:grid; grid-template-columns:140px 1fr; gap:2rem; padding:1.5rem 0; border-bottom:1px solid rgba(200,146,42,0.08); align-items:start; }
+    .milestone-status { display:flex; align-items:center; gap:0.6rem; }
+    .m-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .m-dot.done { background:#2ecc71; box-shadow:0 0 8px rgba(46,204,113,0.5); }
+    .m-dot.active { background:var(--gold); box-shadow:0 0 8px rgba(200,146,42,0.5); animation:pulse 2s infinite; }
+    .m-dot.planned { background:var(--grey); }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .milestone-label { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; }
+    .label-done { color:#2ecc71; }
+    .label-active { color:var(--gold); }
+    .label-planned { color:var(--grey); }
+    .milestone-title { font-size:0.95rem; font-weight:600; color:var(--cream); margin-bottom:0.3rem; }
+    .milestone-desc { font-size:0.86rem; color:var(--grey); line-height:1.6; }
+
+    /* Framework diagram */
+    .framework-section { background:var(--navy2); border-top:1px solid rgba(200,146,42,0.1); border-bottom:1px solid rgba(200,146,42,0.1); }
+    .framework-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; background:rgba(200,146,42,0.08); margin-top:3rem; }
+    .framework-layer { background:var(--navy); padding:2rem 1.5rem; }
+    .layer-icon { font-size:1.8rem; margin-bottom:1rem; display:block; }
+    .layer-title { font-family:var(--font-display); font-size:1.2rem; letter-spacing:0.04em; color:var(--white); margin-bottom:0.6rem; }
+    .layer-desc { font-size:0.84rem; color:var(--grey); line-height:1.65; }
+
+    /* CTA */
+    .cta-strip { background:var(--navy2); border-top:1px solid rgba(200,146,42,0.1); }
+    .cta-inner { max-width:1200px; margin:0 auto; padding:3.5rem 4rem; display:flex; justify-content:space-between; align-items:center; gap:2rem; }
+    .cta-text h3 { font-family:var(--font-display); font-size:2rem; color:var(--white); margin-bottom:0.4rem; }
+    .cta-text p { font-size:0.92rem; color:var(--grey); }
+    .btn-primary { font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:0.9rem 2rem; text-decoration:none; display:inline-block; white-space:nowrap; transition:background 0.2s,transform 0.15s; clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%); }
+    .btn-primary:hover { background:var(--gold2); transform:translateY(-2px); }
+    .btn-outline { font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); background:transparent; padding:0.9rem 2rem; border:1px solid rgba(200,146,42,0.4); text-decoration:none; display:inline-block; white-space:nowrap; transition:border-color 0.2s,color 0.2s; }
+    .btn-outline:hover { border-color:var(--gold); color:var(--gold2); }
+
+    footer { background:#050e1a; border-top:1px solid rgba(200,146,42,0.15); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; }
+    .footer-left { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.1em; color:var(--grey); }
+    .footer-logo { font-family:var(--font-display); font-size:1.4rem; color:var(--gold); }
+    .footer-links { display:flex; gap:2rem; list-style:none; }
+    .footer-links a { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--grey); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--gold); }
+
+    .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width:900px) {
+      nav { padding:1rem 1.5rem; } .nav-links { display:none; }
+      .page-hero { padding:8rem 1.5rem 3rem; }
+      .section-inner { padding:3rem 1.5rem; }
+      .overview-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .objectives-grid { grid-template-columns:1fr; }
+      .framework-grid { grid-template-columns:1fr 1fr; }
+      .milestone { grid-template-columns:100px 1fr; gap:1rem; }
+      .cta-inner { flex-direction:column; align-items:flex-start; padding:2.5rem 1.5rem; }
+      footer { flex-direction:column; gap:1.5rem; text-align:center; padding:2rem 1.5rem; }
+    }
+  </style>
 </head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">PACIFIC ARTIS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="index.html#ai-agents">AI Agents</a></li>
+      <li><a href="Phd.html" class="active">PhD</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Training.html">Training</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Enquire</a>
+  </nav>
 
-<body class="bg-gray-50 text-gray-800">
-  <!-- Navbar -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Your Name</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm font-medium">
-        <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-          <li><a href="profile_page.html" class="hover:text-blue-600">Profile</a></li>
-          <li><a href="Bussinness.html" class="hover:text-blue-600">Business</a></li>
-          <li><a href="Training.html" class="hover:text-blue-600">Training</a></li>
-          <li><a href="systems_engineering.html" class="hover:text-blue-600">Systems</a></li>
-          <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
-          <li><a href="Phd.html" class="hover:text-blue-600">PhD</a></li>
-          <li><a href="gallery.html" class="hover:text-blue-600">Gallery</a></li>
-          <li><a href="C:\Users\yomol\OneDrive\Desktop\Desktop Copy all files here\My Website\Pacific_artis.html" class="hover:text-blue-600">Pacific Artis</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div class="page-hero">
+    <div class="hero-grid"></div>
+    <div class="page-eyebrow">Doctoral Research</div>
+    <h1 class="page-title">PhD<br>RESEARCH</h1>
+    <p class="page-subtitle">Scalable hybrid reliability frameworks blending edge computing and cloud AI for real-time equipment health monitoring in the mining sector.</p>
+  </div>
 
-  <!-- PhD Section -->
-  <section class="max-w-5xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold mb-6 text-center">PhD Progress</h2>
-    <p class="text-center mb-10 max-w-3xl mx-auto">This page documents my ongoing PhD research, which focuses on scalable frameworks for reliability engineering using hybrid edge-cloud architectures, digital twins, and multi-equipment model generalization in the mining industry.</p>
+  <!-- OVERVIEW -->
+  <section>
+    <div class="section-inner">
+      <div class="overview-grid">
+        <div class="fade-up">
+          <div class="section-label">Research Overview</div>
+          <h2 class="section-title">THE RESEARCH PROBLEM</h2>
+          <p class="body-text">
+            Mining operations face a fundamental contradiction in reliability engineering:
+            the assets that most need continuous monitoring — draglines, thickeners, ball mills,
+            conveyors — are often located in environments with limited connectivity, harsh conditions,
+            and massive data volumes that overwhelm traditional cloud-only architectures.
+          </p>
+          <p class="body-text">
+            Existing reliability frameworks treat edge and cloud as separate choices.
+            <strong>My research argues they must be integrated</strong> — with intelligent
+            partitioning of processing between edge devices at the asset and cloud platforms
+            for fleet-wide pattern recognition, all grounded in rigorous RCM2 methodology
+            rather than pure data-driven approaches.
+          </p>
+          <p class="body-text">
+            The goal is a <strong>scalable hybrid reliability framework</strong> that works
+            in the real conditions of Australian mining — intermittent connectivity, diverse
+            equipment types, regulatory requirements, and the practical constraints of
+            maintenance teams in the field.
+          </p>
+        </div>
 
-    <div class="space-y-10">
-      <div>
-        <h3 class="text-xl font-semibold mb-2">Research Focus</h3>
-        <p>My research aims to bridge the gap in reliability engineering literature by designing a scalable framework that integrates different types of industrial equipment into a unified monitoring and predictive maintenance system.</p>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold mb-2">Current Objectives</h3>
-        <ul class="list-disc list-inside">
-          <li>Develop an integrated reliability model across heterogeneous equipment types.</li>
-          <li>Validate digital twin deployment on edge and hybrid systems.</li>
-          <li>Evaluate framework performance using simulated and public datasets.</li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold mb-2">Recent Milestones</h3>
-        <ul class="list-disc list-inside">
-          <li>Completed literature review on reliability modeling approaches.</li>
-          <li>Established simulation environment for initial model testing.</li>
-          <li>Published preliminary findings in international conference on digital twins.</li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-semibold mb-2">Next Steps</h3>
-        <ul class="list-disc list-inside">
-          <li>Optimize multi-equipment generalization algorithm.</li>
-          <li>Deploy hybrid edge-cloud infrastructure prototype.</li>
-          <li>Conduct comparative validation with real-world industrial partners.</li>
-        </ul>
+        <div class="research-sidebar fade-up">
+          <div class="sidebar-card">
+            <div class="sidebar-label">Research Area</div>
+            <div class="sidebar-val">Mining Equipment Reliability Engineering</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sidebar-label">Framework</div>
+            <div class="sidebar-val">Hybrid Edge-Cloud Architecture</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sidebar-label">Methods</div>
+            <div class="sidebar-val">RCM2 · Machine Learning · Digital Twin · IoT · Edge Computing</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sidebar-label">Sector</div>
+            <div class="sidebar-val">Mining &amp; Resources – Australia</div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sidebar-label">Status</div>
+            <div class="sidebar-val" style="color:#2ecc71; font-weight:600;">Active Research</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-6 mt-10 text-sm">
-   <p>&copy; 2025 Yusuf Oluwasola Omoloja. All rights reserved.</p>
+  <!-- OBJECTIVES -->
+  <section style="background:var(--navy2); border-top:1px solid rgba(200,146,42,0.1); border-bottom:1px solid rgba(200,146,42,0.1);">
+    <div class="section-inner">
+      <div class="section-label fade-up">Objectives</div>
+      <h2 class="section-title fade-up">RESEARCH OBJECTIVES</h2>
+      <div class="objectives-grid">
+        <div class="obj-card fade-up">
+          <div class="obj-num">01</div>
+          <div class="obj-title">Integrated Reliability Model</div>
+          <p class="obj-desc">Develop an integrated reliability model that works across heterogeneous equipment types — from rotating machinery to process instrumentation — within a single unified framework.</p>
+        </div>
+        <div class="obj-card fade-up">
+          <div class="obj-num">02</div>
+          <div class="obj-title">Edge-Cloud Architecture</div>
+          <p class="obj-desc">Design and validate a hybrid edge-cloud infrastructure that partitions processing intelligently — real-time anomaly detection at the edge, fleet-wide pattern learning in the cloud.</p>
+        </div>
+        <div class="obj-card fade-up">
+          <div class="obj-num">03</div>
+          <div class="obj-title">Digital Twin Validation</div>
+          <p class="obj-desc">Validate digital twin deployment on edge and hybrid systems, establishing performance benchmarks for accuracy, latency, and resource consumption in mining environments.</p>
+        </div>
+        <div class="obj-card fade-up">
+          <div class="obj-num">04</div>
+          <div class="obj-title">RCM2 Integration</div>
+          <p class="obj-desc">Integrate RCM2 methodology as the analytical backbone of the framework — ensuring AI-generated maintenance recommendations are grounded in engineering consequence logic, not just statistical pattern matching.</p>
+        </div>
+        <div class="obj-card fade-up">
+          <div class="obj-num">05</div>
+          <div class="obj-title">Multi-Equipment Generalisation</div>
+          <p class="obj-desc">Develop and validate algorithms for multi-equipment model generalisation — so the framework learns from failures across the fleet and transfers that knowledge to individual assets.</p>
+        </div>
+        <div class="obj-card fade-up">
+          <div class="obj-num">06</div>
+          <div class="obj-title">Industry Validation</div>
+          <p class="obj-desc">Conduct comparative validation with real-world industrial partners, comparing framework performance against existing maintenance approaches on production mining equipment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- MILESTONES -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label fade-up">Progress</div>
+      <h2 class="section-title fade-up">RESEARCH MILESTONES</h2>
+      <div class="milestones fade-up">
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot done"></span>
+            <span class="milestone-label label-done">Complete</span>
+          </div>
+          <div>
+            <div class="milestone-title">Literature Review – Reliability Modelling Approaches</div>
+            <p class="milestone-desc">Comprehensive review of existing reliability frameworks, edge computing architectures, digital twin methodologies, and RCM2 applications in mining. Gaps identified in hybrid edge-cloud integration.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot done"></span>
+            <span class="milestone-label label-done">Complete</span>
+          </div>
+          <div>
+            <div class="milestone-title">Simulation Environment for Initial Model Testing</div>
+            <p class="milestone-desc">Established simulation environment for initial model testing using synthetic and public datasets. Baseline performance metrics established for comparison with proposed framework.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot done"></span>
+            <span class="milestone-label label-done">Complete</span>
+          </div>
+          <div>
+            <div class="milestone-title">Preliminary Findings – International Conference</div>
+            <p class="milestone-desc">Published preliminary findings at international conference on digital twins. Framework architecture presented and validated by peer review. Feedback incorporated into refined research design.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot active"></span>
+            <span class="milestone-label label-active">In Progress</span>
+          </div>
+          <div>
+            <div class="milestone-title">Multi-Equipment Generalisation Algorithm</div>
+            <p class="milestone-desc">Optimising the algorithm for transferring reliability models across heterogeneous equipment types. Current focus on thickener, conveyor, and rotating machinery datasets.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot active"></span>
+            <span class="milestone-label label-active">In Progress</span>
+          </div>
+          <div>
+            <div class="milestone-title">Hybrid Edge-Cloud Infrastructure Prototype</div>
+            <p class="milestone-desc">Deploying prototype hybrid infrastructure on test environment. Edge nodes running lightweight anomaly detection; cloud layer performing fleet-wide pattern analysis and RCM2 decision logic.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot planned"></span>
+            <span class="milestone-label label-planned">Planned</span>
+          </div>
+          <div>
+            <div class="milestone-title">Real-World Industrial Validation</div>
+            <p class="milestone-desc">Comparative validation with industrial partners on production mining equipment. Framework performance benchmarked against existing maintenance approaches across multiple asset types.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-status">
+            <span class="m-dot planned"></span>
+            <span class="milestone-label label-planned">Planned</span>
+          </div>
+          <div>
+            <div class="milestone-title">Thesis Submission</div>
+            <p class="milestone-desc">Final thesis documenting the complete hybrid reliability framework, validation results, and contribution to reliability engineering literature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK LAYERS -->
+  <div class="framework-section">
+    <div class="section-inner">
+      <div class="section-label fade-up">Architecture</div>
+      <h2 class="section-title fade-up">FRAMEWORK LAYERS</h2>
+      <p class="body-text fade-up">The hybrid framework operates across four integrated layers — from physical assets at the edge to fleet-wide intelligence in the cloud.</p>
+      <div class="framework-grid fade-up">
+        <div class="framework-layer">
+          <span class="layer-icon">🏭</span>
+          <div class="layer-title">ASSET LAYER</div>
+          <p class="layer-desc">Physical mining equipment with embedded sensors — vibration, temperature, pressure, current. Raw condition data generated continuously in the field.</p>
+        </div>
+        <div class="framework-layer">
+          <span class="layer-icon">⚡</span>
+          <div class="layer-title">EDGE LAYER</div>
+          <p class="layer-desc">On-site edge devices running lightweight ML models for real-time anomaly detection. Low latency, operates on limited connectivity, generates alerts without cloud dependency.</p>
+        </div>
+        <div class="framework-layer">
+          <span class="layer-icon">☁️</span>
+          <div class="layer-title">CLOUD LAYER</div>
+          <p class="layer-desc">Fleet-wide pattern recognition, digital twin synchronisation, RCM2 decision logic, and long-term reliability trend analysis. Learns from failure events across all assets.</p>
+        </div>
+        <div class="framework-layer">
+          <span class="layer-icon">🤖</span>
+          <div class="layer-title">INTELLIGENCE LAYER</div>
+          <p class="layer-desc">AI-powered maintenance recommendations grounded in RCM2 methodology. Consequence-first logic ensures recommendations are defensible engineering decisions, not statistical outputs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3>INTERESTED IN COLLABORATION?</h3>
+        <p>Research partnerships, industrial validation opportunities, or discussions on hybrid reliability frameworks — get in touch.</p>
+      </div>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-primary">Get In Touch</a>
+        <a href="blog.html" class="btn-outline">Read the Blog</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 Yusuf Oluwasola Omoloja · Pacific Artis · All Rights Reserved</div>
+    <div class="footer-logo">PACIFIC ARTIS</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
   </footer>
-</body>
 
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80); });
+    }, { threshold:0.08 });
+    document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+  </script>
+</body>
 </html>

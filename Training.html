@@ -1,67 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yusuf Oluwasola Omoloja | Training</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pacific Artis | Training – Reliability Engineering & CMMS Training</title>
+  <meta name="description" content="RCM2 methodology training, SAP PM, IBM Maximo, predictive maintenance, and reliability engineering upskilling for mining and industrial teams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --navy:#0a1628; --navy2:#0f2040; --steel:#1a3a5c;
+      --gold:#c8922a; --gold2:#e8b84b; --cream:#f5f0e8;
+      --white:#ffffff; --grey:#8a9ab0;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-body:'DM Sans',sans-serif;
+      --font-mono:'DM Mono',monospace;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font-body); background:var(--navy); color:var(--cream); overflow-x:hidden; line-height:1.6; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4rem; background:rgba(10,22,40,0.85); backdrop-filter:blur(12px); border-bottom:1px solid rgba(200,146,42,0.2); }
+    .nav-logo { font-family:var(--font-display); font-size:1.6rem; letter-spacing:0.08em; color:var(--gold); text-decoration:none; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--grey); text-decoration:none; transition:color 0.2s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transition:transform 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--gold2); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    .nav-cta { font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:0.55rem 1.4rem; text-decoration:none; transition:background 0.2s; clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%); }
+    .nav-cta:hover { background:var(--gold2); }
+
+    .page-hero { padding:10rem 4rem 5rem; position:relative; overflow:hidden; border-bottom:1px solid rgba(200,146,42,0.1); }
+    .page-hero::before { content:''; position:absolute; right:0; top:0; bottom:0; width:50%; background:radial-gradient(ellipse at right center,rgba(200,146,42,0.06) 0%,transparent 70%); pointer-events:none; }
+    .hero-grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(200,146,42,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,42,0.03) 1px,transparent 1px); background-size:60px 60px; }
+    .page-eyebrow { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:1rem; }
+    .page-eyebrow::before { content:''; display:block; width:30px; height:1px; background:var(--gold); }
+    .page-title { font-family:var(--font-display); font-size:clamp(4rem,8vw,7rem); letter-spacing:0.02em; color:var(--white); line-height:0.95; position:relative; z-index:1; }
+    .page-subtitle { font-size:1.1rem; color:var(--grey); margin-top:1.2rem; font-weight:300; max-width:650px; position:relative; z-index:1; }
+
+    .section-inner { max-width:1200px; margin:0 auto; padding:5rem 4rem; position:relative; z-index:1; }
+    .section-label { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; display:flex; align-items:center; gap:0.8rem; }
+    .section-label::before { content:''; display:block; width:24px; height:1px; background:var(--gold); }
+    .section-title { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3rem); letter-spacing:0.03em; color:var(--white); line-height:1; margin-bottom:1.2rem; }
+    .section-desc { font-size:1rem; color:var(--grey); line-height:1.75; font-weight:300; margin-bottom:3rem; max-width:700px; }
+
+    /* Training cards */
+    .training-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+    .training-card { background:rgba(15,32,64,0.5); border:1px solid rgba(200,146,42,0.12); padding:2.5rem; position:relative; transition:border-color 0.3s,transform 0.3s; }
+    .training-card:hover { border-color:rgba(200,146,42,0.35); transform:translateY(-3px); }
+    .training-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),transparent); }
+    .card-icon { font-size:2.2rem; margin-bottom:1.2rem; display:block; }
+    .card-title { font-family:var(--font-display); font-size:1.6rem; letter-spacing:0.04em; color:var(--white); margin-bottom:0.8rem; line-height:1; }
+    .card-desc { font-size:0.9rem; color:var(--grey); line-height:1.75; font-weight:300; margin-bottom:1.5rem; }
+    .card-topics { display:flex; flex-direction:column; gap:0.4rem; }
+    .topic-item { display:flex; align-items:center; gap:0.6rem; font-size:0.84rem; color:var(--grey); }
+    .topic-item::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    .card-format { font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(200,146,42,0.25); padding:0.25rem 0.6rem; display:inline-block; margin-top:1.5rem; }
+
+    /* Audience section */
+    .audience-section { background:var(--navy2); border-top:1px solid rgba(200,146,42,0.1); border-bottom:1px solid rgba(200,146,42,0.1); }
+    .audience-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; background:rgba(200,146,42,0.08); margin-top:3rem; }
+    .audience-card { background:var(--navy); padding:2rem 1.5rem; }
+    .audience-icon { font-size:1.8rem; margin-bottom:0.8rem; display:block; }
+    .audience-title { font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+    .audience-desc { font-size:0.84rem; color:var(--grey); line-height:1.65; }
+
+    /* Format options */
+    .formats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+    .format-card { background:rgba(15,32,64,0.4); border:1px solid rgba(200,146,42,0.1); padding:1.8rem 1.5rem; text-align:center; }
+    .format-icon { font-size:2rem; margin-bottom:0.8rem; display:block; }
+    .format-title { font-family:var(--font-display); font-size:1.1rem; letter-spacing:0.04em; color:var(--white); margin-bottom:0.5rem; }
+    .format-desc { font-size:0.84rem; color:var(--grey); line-height:1.6; }
+
+    /* CTA */
+    .cta-strip { background:linear-gradient(135deg,var(--navy2),var(--steel)); border-top:1px solid rgba(200,146,42,0.2); }
+    .cta-inner { max-width:1200px; margin:0 auto; padding:4rem; display:flex; justify-content:space-between; align-items:center; gap:2rem; }
+    .cta-text h3 { font-family:var(--font-display); font-size:2.5rem; color:var(--white); margin-bottom:0.5rem; }
+    .cta-text p { font-size:0.95rem; color:var(--grey); max-width:500px; }
+    .btn-primary { font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:1rem 2.2rem; text-decoration:none; display:inline-block; white-space:nowrap; transition:background 0.2s,transform 0.15s; clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%); }
+    .btn-primary:hover { background:var(--gold2); transform:translateY(-2px); }
+    .btn-outline { font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); background:transparent; padding:1rem 2.2rem; border:1px solid rgba(200,146,42,0.4); text-decoration:none; display:inline-block; white-space:nowrap; transition:border-color 0.2s,color 0.2s; }
+    .btn-outline:hover { border-color:var(--gold); color:var(--gold2); }
+
+    footer { background:#050e1a; border-top:1px solid rgba(200,146,42,0.15); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; }
+    .footer-left { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.1em; color:var(--grey); }
+    .footer-logo { font-family:var(--font-display); font-size:1.4rem; color:var(--gold); }
+    .footer-links { display:flex; gap:2rem; list-style:none; }
+    .footer-links a { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--grey); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--gold); }
+
+    .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width:900px) {
+      nav { padding:1rem 1.5rem; } .nav-links { display:none; }
+      .page-hero { padding:8rem 1.5rem 3rem; }
+      .section-inner { padding:3rem 1.5rem; }
+      .training-grid { grid-template-columns:1fr; }
+      .audience-grid { grid-template-columns:1fr 1fr; }
+      .formats-grid { grid-template-columns:1fr; }
+      .cta-inner { flex-direction:column; align-items:flex-start; padding:2.5rem 1.5rem; }
+      footer { flex-direction:column; gap:1.5rem; text-align:center; padding:2rem 1.5rem; }
+    }
+  </style>
 </head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">PACIFIC ARTIS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="index.html#ai-agents">AI Agents</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Training.html" class="active">Training</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Enquire</a>
+  </nav>
 
-<body class="bg-gray-50 text-gray-800">
-  <!-- Navbar -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Yusuf Oluwasola Omoloja</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm font-medium">
-          <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-          <li><a href="profile_page.html" class="hover:text-blue-600">Profile</a></li>
-          <li><a href="Bussinness.html" class="hover:text-blue-600">Business</a></li>
-          <li><a href="Training.html" class="hover:text-blue-600">Training</a></li>
-          <li><a href="systems_engineering.html" class="hover:text-blue-600">Systems</a></li>
-          <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
-          <li><a href="Phd.html" class="hover:text-blue-600">PhD</a></li>
-          <li><a href="gallery.html" class="hover:text-blue-600">Gallery</a></li>
-          <li><a href="C:\Users\yomol\OneDrive\Desktop\Desktop Copy all files here\My Website\Pacific_artis.html" class="hover:text-blue-600">Pacific Artis</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div class="page-hero">
+    <div class="hero-grid"></div>
+    <div class="page-eyebrow">Capability Building</div>
+    <h1 class="page-title">TRAINING<br>SERVICES</h1>
+    <p class="page-subtitle">Practical, field-relevant training for maintenance professionals. Not classroom theory — real methodology, real tools, real-world application in mining and industrial operations.</p>
+  </div>
 
-  <!-- Training Section -->
-  <section class="max-w-6xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold mb-8 text-center">Training Services</h2>
-    <p class="text-center max-w-3xl mx-auto mb-12">Empowering maintenance professionals with the knowledge and hands-on skills to use top-tier maintenance systems and tools effectively.</p>
+  <!-- TRAINING PROGRAMMES -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label fade-up">Programmes</div>
+      <h2 class="section-title fade-up">TRAINING PROGRAMMES</h2>
+      <p class="section-desc fade-up">Every programme is designed to build capability that transfers directly to the job — whether that is running an FMEA session, configuring a SAP maintenance plan, or interpreting a vibration spectrum.</p>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">SAP PM Training</h3>
-        <p>Comprehensive training in SAP Plant Maintenance module, from foundational concepts to advanced configuration, designed for engineers, planners, and maintenance managers.</p>
-      </div>
+      <div class="training-grid">
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">IBM Maximo Training</h3>
-        <p>Practical sessions on asset management, work order tracking, preventive maintenance planning, and reporting within the Maximo platform.</p>
-      </div>
+        <div class="training-card fade-up">
+          <span class="card-icon">⚙️</span>
+          <div class="card-title">RCM2 METHODOLOGY</div>
+          <p class="card-desc">John Moubray's Reliability Centred Maintenance — the complete methodology from function analysis through to maintenance task selection. Practical facilitation skills included so participants can run their own RCM2 sessions after training.</p>
+          <div class="card-topics">
+            <div class="topic-item">Functions and functional failures</div>
+            <div class="topic-item">Failure mode identification</div>
+            <div class="topic-item">Three-level effects analysis</div>
+            <div class="topic-item">RCM2 consequence categories</div>
+            <div class="topic-item">The decision diagram — correct sequence</div>
+            <div class="topic-item">TBM, OcM and failure-finding tasks</div>
+            <div class="topic-item">Hidden failure identification</div>
+            <div class="topic-item">FMEA facilitation skills</div>
+          </div>
+          <span class="card-format">2–3 Day Workshop</span>
+        </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Reliability Engineering Tools</h3>
-        <p>Hands-on guidance in using reliability software tools like Weibull analysis, RCM software, and maintenance analytics platforms for data-driven decision-making.</p>
-      </div>
+        <div class="training-card fade-up">
+          <span class="card-icon">🗄️</span>
+          <div class="card-title">SAP PLANT MAINTENANCE</div>
+          <p class="card-desc">Comprehensive SAP PM training from foundational concepts to practical configuration. Designed for reliability engineers, planners, and maintenance managers who need to get the most from SAP PM in their daily work.</p>
+          <div class="card-topics">
+            <div class="topic-item">Functional location hierarchy design</div>
+            <div class="topic-item">Equipment master data creation</div>
+            <div class="topic-item">Maintenance plan configuration</div>
+            <div class="topic-item">Work order management</div>
+            <div class="topic-item">Measurement documents and counters</div>
+            <div class="topic-item">Notifications and task lists</div>
+            <div class="topic-item">KPI reporting and dashboards</div>
+            <div class="topic-item">Integration with materials management</div>
+          </div>
+          <span class="card-format">2–4 Day Workshop</span>
+        </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Custom Workshops</h3>
-        <p>Tailored workshops and mentoring programs based on your organization's needs — combining reliability theory with real-world case studies and tool usage.</p>
+        <div class="training-card fade-up">
+          <span class="card-icon">📊</span>
+          <div class="card-title">IBM MAXIMO</div>
+          <p class="card-desc">Practical Maximo training focused on asset lifecycle management and maintenance workflow. From asset setup through to work order management, PM scheduling, and reporting — using real scenarios from mining and industrial operations.</p>
+          <div class="card-topics">
+            <div class="topic-item">Asset and location hierarchy</div>
+            <div class="topic-item">Work order creation and workflow</div>
+            <div class="topic-item">Preventive maintenance setup</div>
+            <div class="topic-item">Condition monitoring records</div>
+            <div class="topic-item">Labour and materials tracking</div>
+            <div class="topic-item">Reporting and analytics</div>
+            <div class="topic-item">Failure reporting and analysis</div>
+          </div>
+          <span class="card-format">2–3 Day Workshop</span>
+        </div>
+
+        <div class="training-card fade-up">
+          <span class="card-icon">🔬</span>
+          <div class="card-title">PREDICTIVE MAINTENANCE TOOLS</div>
+          <p class="card-desc">Hands-on training in condition monitoring technologies and data interpretation. Practical skills in vibration analysis, oil analysis, thermography, and ultrasound — including how to integrate findings into your maintenance strategy.</p>
+          <div class="card-topics">
+            <div class="topic-item">Vibration analysis fundamentals</div>
+            <div class="topic-item">Oil analysis and lubrication</div>
+            <div class="topic-item">Thermography interpretation</div>
+            <div class="topic-item">Ultrasound applications</div>
+            <div class="topic-item">P-F interval identification</div>
+            <div class="topic-item">Route design and scheduling</div>
+            <div class="topic-item">Alarm setpoint development</div>
+            <div class="topic-item">Integration with CMMS</div>
+          </div>
+          <span class="card-format">1–2 Day Workshop</span>
+        </div>
+
+        <div class="training-card fade-up">
+          <span class="card-icon">🤖</span>
+          <div class="card-title">AI FOR RELIABILITY ENGINEERS</div>
+          <p class="card-desc">How to use AI agents to accelerate reliability engineering work — FMEA generation, dynamic risk scoring, work instruction creation, and maintenance strategy optimisation. Practical hands-on session with real tools.</p>
+          <div class="card-topics">
+            <div class="topic-item">AI agent fundamentals for engineers</div>
+            <div class="topic-item">RCM2 FMEA agent — live demonstration</div>
+            <div class="topic-item">Prompt engineering for technical work</div>
+            <div class="topic-item">Validating AI-generated FMEA output</div>
+            <div class="topic-item">Dynamic FMEA concepts</div>
+            <div class="topic-item">Integrating AI with SAP PM</div>
+            <div class="topic-item">Building your own agent workflows</div>
+          </div>
+          <span class="card-format">1 Day Workshop</span>
+        </div>
+
+        <div class="training-card fade-up">
+          <span class="card-icon">🎯</span>
+          <div class="card-title">CUSTOM WORKSHOPS</div>
+          <p class="card-desc">Tailored programmes built around your organisation's specific needs, asset base, and CMMS environment. Combines reliability methodology with your actual equipment, your actual data, and your actual maintenance challenges.</p>
+          <div class="card-topics">
+            <div class="topic-item">Scoped to your specific requirements</div>
+            <div class="topic-item">Uses your equipment and data</div>
+            <div class="topic-item">Delivered on-site or remotely</div>
+            <div class="topic-item">Can include FMEA facilitation</div>
+            <div class="topic-item">Includes post-training support</div>
+            <div class="topic-item">Available as ongoing mentoring</div>
+          </div>
+          <span class="card-format">Flexible Duration</span>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-6 mt-10 text-sm">
-    <p>&copy; 2025 Yusuf Oluwasola Omoloja. All rights reserved.</p>
+  <!-- AUDIENCE -->
+  <div class="audience-section">
+    <div class="section-inner">
+      <div class="section-label fade-up">Who It Is For</div>
+      <h2 class="section-title fade-up">TARGET AUDIENCE</h2>
+      <div class="audience-grid fade-up">
+        <div class="audience-card">
+          <span class="audience-icon">👷</span>
+          <div class="audience-title">Reliability Engineers</div>
+          <p class="audience-desc">Engineers who want to deepen their RCM2 skills, add AI tools to their practice, or get more from their CMMS system.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon">📋</span>
+          <div class="audience-title">Maintenance Planners</div>
+          <p class="audience-desc">Planners who need practical SAP PM or Maximo skills to build effective maintenance plans and work order workflows.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon">👔</span>
+          <div class="audience-title">Maintenance Managers</div>
+          <p class="audience-desc">Managers who want their teams to understand reliability methodology and make better maintenance decisions.</p>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon">🔧</span>
+          <div class="audience-title">Technicians &amp; Tradespeople</div>
+          <p class="audience-desc">Field technicians who need to understand how to use CMMS systems effectively and contribute to condition monitoring programmes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- DELIVERY FORMATS -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label fade-up">Delivery</div>
+      <h2 class="section-title fade-up">HOW TRAINING IS DELIVERED</h2>
+      <div class="formats-grid fade-up">
+        <div class="format-card">
+          <span class="format-icon">🏭</span>
+          <div class="format-title">ON-SITE</div>
+          <p class="format-desc">Delivered at your facility using your equipment, your CMMS, and your real maintenance data. Maximum relevance and immediate application.</p>
+        </div>
+        <div class="format-card">
+          <span class="format-icon">💻</span>
+          <div class="format-title">REMOTE</div>
+          <p class="format-desc">Fully interactive online delivery via video conference. Suitable for geographically dispersed teams or organisations without local training facilities.</p>
+        </div>
+        <div class="format-card">
+          <span class="format-icon">🔄</span>
+          <div class="format-title">MENTORING</div>
+          <p class="format-desc">Ongoing one-on-one or small group mentoring. Ideal for engineers building RCM2 or AI capability over time, with real project support included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3>BOOK A TRAINING SESSION</h3>
+        <p>Tell me about your team, your CMMS environment, and your training objectives. I will design a programme that fits your specific situation.</p>
+      </div>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-primary">Enquire Now</a>
+        <a href="Bussinness.html" class="btn-outline">View All Services</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 Yusuf Oluwasola Omoloja · Pacific Artis · All Rights Reserved</div>
+    <div class="footer-logo">PACIFIC ARTIS</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
   </footer>
-</body>
 
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80); });
+    }, { threshold:0.08 });
+    document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+  </script>
+</body>
 </html>
