@@ -1,68 +1,834 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Pacific Artis | Business</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pacific Artis | Services – Reliability Engineering & AI Agent Development</title>
+  <meta name="description" content="RCM2 analysis, predictive maintenance, SAP PM consulting, AI agent development, digital twin deployment and reliability training." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0a1628;
+      --navy2:   #0f2040;
+      --steel:   #1a3a5c;
+      --gold:    #c8922a;
+      --gold2:   #e8b84b;
+      --cream:   #f5f0e8;
+      --white:   #ffffff;
+      --grey:    #8a9ab0;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,146,42,0.2);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--gold2); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.55rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .nav-cta:hover { background: var(--gold2); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 10rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+      background: radial-gradient(ellipse at right center, rgba(200,146,42,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(200,146,42,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .page-eyebrow::before {
+      content: ''; display: block;
+      width: 30px; height: 1px; background: var(--gold);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 8vw, 7rem);
+      letter-spacing: 0.02em;
+      color: var(--white);
+      line-height: 0.95;
+      position: relative; z-index: 1;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--grey);
+      margin-top: 1.2rem;
+      font-weight: 300;
+      max-width: 600px;
+      position: relative; z-index: 1;
+    }
+
+    /* ── SECTIONS ── */
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      position: relative; z-index: 1;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      letter-spacing: 0.03em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--grey);
+      max-width: 650px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── SERVICE CARDS ── */
+    .services-list { display: flex; flex-direction: column; gap: 1.5px; background: rgba(200,146,42,0.08); }
+
+    .service-block {
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
+      padding: 3rem 3rem;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-block:hover { background: var(--navy2); }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: rgba(200,146,42,0.15);
+      line-height: 1;
+      padding-top: 0.3rem;
+      transition: color 0.3s;
+    }
+
+    .service-block:hover .service-num { color: rgba(200,146,42,0.4); }
+
+    .service-body {}
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      line-height: 1;
+    }
+
+    .service-desc {
+      font-size: 0.92rem;
+      color: var(--grey);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-deliverables {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+
+    .deliverable {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,146,42,0.25);
+      padding: 0.25rem 0.6rem;
+      background: rgba(200,146,42,0.04);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      padding-top: 0.5rem;
+      opacity: 0.7;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .service-block:hover .service-icon { opacity: 1; transform: scale(1.08); }
+
+    /* ── AI HIGHLIGHT ── */
+    .ai-highlight {
+      background: var(--navy2);
+      border-top: 1px solid rgba(200,146,42,0.1);
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .ai-highlight-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .ai-highlight-text h2 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .ai-highlight-text p {
+      font-size: 0.96rem;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .ai-highlight-text p strong { color: var(--cream); font-weight: 500; }
+
+    .ai-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background: var(--navy);
+      border: 1px solid rgba(200,146,42,0.15);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .metric-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    /* ── PROCESS ── */
+    .process-section { background: var(--navy); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5px;
+      background: rgba(200,146,42,0.08);
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      background: var(--navy);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(200,146,42,0.06);
+      line-height: 1;
+      position: absolute;
+      top: 1rem; right: 1rem;
+    }
+
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    .step-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    /* ── CTA ── */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--navy2), var(--steel));
+      border-top: 1px solid rgba(200,146,42,0.2);
+    }
+
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta-text h3 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-text p {
+      font-size: 0.95rem;
+      color: var(--grey);
+      max-width: 500px;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+
+    .btn-outline {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      padding: 1rem 2.2rem;
+      border: 1px solid rgba(200,146,42,0.4);
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050e1a;
+      border-top: 1px solid rgba(200,146,42,0.15);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--grey);
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-hero { padding: 8rem 1.5rem 3rem; }
+      .section-inner { padding: 3rem 1.5rem; }
+      .service-block { grid-template-columns: 60px 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
+      .service-icon { display: none; }
+      .ai-highlight-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .cta-inner { flex-direction: column; align-items: flex-start; padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
+<body>
 
-<body class="bg-gray-50 text-gray-800">
-  <!-- Navbar -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Omoloja Yusuf Oluwasola</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm font-medium">
-         <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-          <li><a href="profile_page.html" class="hover:text-blue-600">Profile</a></li>
-          <li><a href="Bussinness.html" class="hover:text-blue-600">Business</a></li>
-          <li><a href="Training.html" class="hover:text-blue-600">Training</a></li>
-          <li><a href="systems_engineering.html" class="hover:text-blue-600">Systems</a></li>
-          <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
-          <li><a href="Phd.html" class="hover:text-blue-600">PhD</a></li>
-          <li><a href="gallery.html" class="hover:text-blue-600">Gallery</a></li>
-          <li><a href="C:\Users\yomol\OneDrive\Desktop\Desktop Copy all files here\My Website\Pacific_artis.html" class="hover:text-blue-600">Pacific Artis</a></li>
-        </ul>
-      </nav>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">PACIFIC ARTIS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="Bussinness.html" class="active">Services</a></li>
+      <li><a href="index.html#ai-agents">AI Agents</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Training.html">Training</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Enquire</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="page-eyebrow">Professional Services</div>
+    <h1 class="page-title">WHAT<br>I DELIVER</h1>
+    <p class="page-subtitle">
+      A full suite of reliability engineering and AI development services
+      for mining, resources, and heavy industrial operations.
+      15+ years of field expertise, now augmented by intelligent systems.
+    </p>
+  </div>
+
+  <!-- SERVICES LIST -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label fade-up">Services</div>
+      <h2 class="section-title fade-up">CORE OFFERINGS</h2>
+      <p class="section-desc fade-up">
+        Every engagement is grounded in engineering rigour — not generic advice.
+        Each service is backed by real methodology, real tools, and real field experience.
+      </p>
     </div>
-  </header>
 
-  <!-- Business Section -->
-  <section class="max-w-6xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold mb-8 text-center">My Business</h2>
-    <p class="text-center max-w-3xl mx-auto mb-12">As a Reliability Engineer, I provide a full suite of professional services designed to improve equipment uptime, optimize maintenance strategies, and integrate digital technologies into asset management systems.</p>
+    <div class="services-list">
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Preventive & Predictive Maintenance</h3>
-        <p>Designing and implementing maintenance strategies to ensure optimal performance and asset longevity, leveraging vibration analysis, oil analysis, thermography, and more.</p>
+      <div class="service-block fade-up">
+        <div class="service-num">01</div>
+        <div class="service-body">
+          <div class="service-title">RCM2 &amp; FMEA ANALYSIS</div>
+          <p class="service-desc">
+            Rigorous Reliability Centred Maintenance analysis using John Moubray's RCM2
+            methodology. Every failure mode is analysed function-first, with consequence
+            categorisation preceding task selection — the only defensible order per RCM2
+            decision logic. Now AI-accelerated: what previously took 3–5 engineering days
+            is delivered in hours, with the human effort focused on validation and
+            facilitation rather than document generation.
+          </p>
+          <div class="service-deliverables">
+            <span class="deliverable">FMEA Workbook</span>
+            <span class="deliverable">PM Task Register</span>
+            <span class="deliverable">Risk Summary</span>
+            <span class="deliverable">Work Instructions</span>
+            <span class="deliverable">Hidden Failure Analysis</span>
+            <span class="deliverable">RCM2 Facilitation</span>
+          </div>
+        </div>
+        <div class="service-icon">⚙️</div>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Maintenance ERP Consulting (SAP, MAXIMO)</h3>
-        <p>Customizing, deploying, and training maintenance teams on the effective use of SAP PM and IBM Maximo to align maintenance workflows with business goals.</p>
+      <div class="service-block fade-up">
+        <div class="service-num">02</div>
+        <div class="service-body">
+          <div class="service-title">PREDICTIVE MAINTENANCE</div>
+          <p class="service-desc">
+            Designing and implementing condition-based maintenance programmes
+            that detect failures before they occur. From condition monitoring
+            strategy design through to technology selection, data interpretation,
+            and integration with your existing SAP or Maximo maintenance plans.
+            Covers vibration analysis, oil analysis, thermography, ultrasound,
+            and motor current signature analysis.
+          </p>
+          <div class="service-deliverables">
+            <span class="deliverable">Condition Monitoring Strategy</span>
+            <span class="deliverable">Technology Selection</span>
+            <span class="deliverable">P-F Interval Analysis</span>
+            <span class="deliverable">Route Design</span>
+            <span class="deliverable">Alarm Setpoints</span>
+            <span class="deliverable">Technician Training</span>
+          </div>
+        </div>
+        <div class="service-icon">📊</div>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Software Development</h3>
-        <p>Creating tailored applications and dashboards for reliability engineering teams to support data analysis, maintenance KPIs, and real-time alerts.</p>
+      <div class="service-block fade-up">
+        <div class="service-num">03</div>
+        <div class="service-body">
+          <div class="service-title">SAP PM &amp; MAXIMO CONSULTING</div>
+          <p class="service-desc">
+            Customising, deploying, and training maintenance teams on SAP Plant
+            Maintenance and IBM Maximo. Covers functional location hierarchy design
+            aligned to your physical asset structure, equipment master data,
+            maintenance plan configuration, work order workflows, and KPI dashboard
+            setup. Ensures your CMMS reflects your actual maintenance strategy —
+            not the default configuration.
+          </p>
+          <div class="service-deliverables">
+            <span class="deliverable">Functional Location Design</span>
+            <span class="deliverable">Equipment Master Data</span>
+            <span class="deliverable">Maintenance Plans</span>
+            <span class="deliverable">Work Order Workflows</span>
+            <span class="deliverable">KPI Reporting</span>
+            <span class="deliverable">User Training</span>
+          </div>
+        </div>
+        <div class="service-icon">🗄️</div>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-2">Digital Twin Deployment</h3>
-        <p>Developing digital representations of physical assets to simulate performance, optimize maintenance planning, and support decision-making across operations.</p>
+      <div class="service-block fade-up">
+        <div class="service-num">04</div>
+        <div class="service-body">
+          <div class="service-title">AI AGENT DEVELOPMENT</div>
+          <p class="service-desc">
+            Building intelligent maintenance agents that encode reliability
+            engineering methodology as AI reasoning logic. The RCM2 FMEA Agent
+            applies Moubray's decision diagram autonomously — consequence-first,
+            task-selection second — and produces formatted, auditable outputs.
+            Custom agents can be built for your specific assets, your SAP data
+            structures, and your process environment.
+          </p>
+          <div class="service-deliverables">
+            <span class="deliverable">FMEA Agent</span>
+            <span class="deliverable">Dynamic Risk Scoring</span>
+            <span class="deliverable">Work Instruction Generator</span>
+            <span class="deliverable">SAP Integration</span>
+            <span class="deliverable">Custom Agents</span>
+            <span class="deliverable">API Development</span>
+          </div>
+        </div>
+        <div class="service-icon">🤖</div>
+      </div>
+
+      <div class="service-block fade-up">
+        <div class="service-num">05</div>
+        <div class="service-body">
+          <div class="service-title">DIGITAL TWIN DEPLOYMENT</div>
+          <p class="service-desc">
+            Developing digital representations of physical assets to simulate
+            performance, optimise maintenance planning, and support real-time
+            decision-making. Integrates with condition monitoring data, process
+            historian data, and maintenance records to create a living model
+            of your equipment — one that updates as your plant operates.
+          </p>
+          <div class="service-deliverables">
+            <span class="deliverable">Asset Modelling</span>
+            <span class="deliverable">Performance Simulation</span>
+            <span class="deliverable">Historian Integration</span>
+            <span class="deliverable">Real-time Dashboards</span>
+            <span class="deliverable">Maintenance Optimisation</span>
+          </div>
+        </div>
+        <div class="service-icon">🔄</div>
+      </div>
+
+      <div class="service-block fade-up">
+        <div class="service-num">06</div>
+        <div class="service-body">
+          <div class="service-title">TRAINING &amp; CAPABILITY BUILDING</div>
+          <p class="service-desc">
+            Upskilling maintenance teams in reliability engineering methodology,
+            CMMS systems, and data-driven maintenance practices. Training is
+            practical and field-relevant — not classroom theory. Covers RCM2
+            methodology, FMEA facilitation, SAP PM and Maximo user training,
+            condition monitoring interpretation, and reliability KPI management.
+          </p>
+          <div class="service-deliverables">
+            <span class="deliverable">RCM2 Methodology</span>
+            <span class="deliverable">FMEA Facilitation</span>
+            <span class="deliverable">SAP PM Training</span>
+            <span class="deliverable">Maximo Training</span>
+            <span class="deliverable">Condition Monitoring</span>
+            <span class="deliverable">Reliability KPIs</span>
+          </div>
+        </div>
+        <div class="service-icon">🎓</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AI HIGHLIGHT -->
+  <div class="ai-highlight">
+    <div class="ai-highlight-inner">
+      <div class="ai-highlight-text fade-up">
+        <div class="section-label">AI Advantage</div>
+        <h2>THE AI-ACCELERATED DIFFERENCE</h2>
+        <p>
+          Traditional FMEA is time-consuming, expensive, and often incomplete
+          because of the sheer effort involved. The result is that most
+          organisations do one FMEA at commissioning, file it, and never
+          update it. The document decays while the plant changes.
+        </p>
+        <p>
+          The <strong>RCM2 FMEA Agent</strong> changes this equation. Generation
+          takes minutes. The human engineering effort shifts from writing
+          to validation — which is where expert judgment actually adds value.
+          And because the FMEA can be regenerated quickly, it stays current.
+        </p>
+        <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="index.html#ai-agents" class="btn-primary">View AI Agents</a>
+          <a href="index.html#contact" class="btn-outline">Request Demo</a>
+        </div>
+      </div>
+
+      <div class="ai-metrics fade-up">
+        <div class="metric-card">
+          <div class="metric-num">3–5</div>
+          <div class="metric-label">Days – Traditional FMEA</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">&lt;1hr</div>
+          <div class="metric-label">AI-Accelerated FMEA</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">64+</div>
+          <div class="metric-label">Failure Modes Per Analysis</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">RCM2</div>
+          <div class="metric-label">Moubray Methodology – Always</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="section-inner">
+      <div class="section-label fade-up">How It Works</div>
+      <h2 class="section-title fade-up">ENGAGEMENT PROCESS</h2>
+      <p class="section-desc fade-up">
+        Every engagement follows a structured process that ensures the output
+        is rigorous, site-specific, and actionable.
+      </p>
+
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <span class="step-num">1</span>
+          <span class="step-icon">💬</span>
+          <div class="step-title">DISCOVERY</div>
+          <p class="step-desc">
+            Understanding your asset base, maintenance challenges, CMMS environment,
+            and specific objectives. Scoping the engagement and agreeing deliverables.
+          </p>
+        </div>
+        <div class="process-step fade-up">
+          <span class="step-num">2</span>
+          <span class="step-icon">📋</span>
+          <div class="step-title">ANALYSIS</div>
+          <p class="step-desc">
+            RCM2 analysis, condition assessment, data review, or CMMS audit —
+            depending on the service. AI-assisted generation where applicable,
+            validated by engineering judgment.
+          </p>
+        </div>
+        <div class="process-step fade-up">
+          <span class="step-num">3</span>
+          <span class="step-icon">✅</span>
+          <div class="step-title">VALIDATION</div>
+          <p class="step-desc">
+            Facilitated review with your operators and maintainers. The people
+            who run the equipment validate the analysis. Site-specific knowledge
+            is captured and incorporated.
+          </p>
+        </div>
+        <div class="process-step fade-up">
+          <span class="step-num">4</span>
+          <span class="step-icon">🚀</span>
+          <div class="step-title">IMPLEMENTATION</div>
+          <p class="step-desc">
+            Delivering final outputs — FMEA workbooks, SAP PM plans, Work Instructions,
+            agent deployments — and supporting your team to implement and sustain
+            the improvements.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-6 mt-10 text-sm">
-    <p>&copy; 2025 Yusuf Oluwasola Omoloja. All rights reserved.</p>
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3>START A CONVERSATION</h3>
+        <p>
+          Tell me about your maintenance challenge. Whether it is a specific
+          analysis, a system implementation, or a long-term reliability
+          programme — let us talk about what is possible.
+        </p>
+      </div>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn-primary">Get In Touch</a>
+        <a href="profile_page.html" class="btn-outline">View Profile</a>
+      </div>
+    </div>
+  </div>
 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">© 2026 Yusuf Oluwasola Omoloja · Pacific Artis · All Rights Reserved</div>
+    <div class="footer-logo">PACIFIC ARTIS</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html">Profile</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
-
 </html>
-

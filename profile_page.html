@@ -1,54 +1,813 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Pacific Artis | Profile </title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Pacific Artis | Profile – Yusuf Oluwasola Omoloja</title>
+  <meta name="description" content="Reliability Engineer, RCM2 Specialist, Digital Twin Expert and AI Agent Developer with 15+ years in mining and industrial asset management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0a1628;
+      --navy2:   #0f2040;
+      --steel:   #1a3a5c;
+      --gold:    #c8922a;
+      --gold2:   #e8b84b;
+      --cream:   #f5f0e8;
+      --white:   #ffffff;
+      --grey:    #8a9ab0;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,146,42,0.2);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--gold2); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.55rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .nav-cta:hover { background: var(--gold2); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 10rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+      background: radial-gradient(ellipse at right center, rgba(200,146,42,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(200,146,42,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .page-eyebrow::before {
+      content: ''; display: block;
+      width: 30px; height: 1px; background: var(--gold);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 8vw, 7rem);
+      letter-spacing: 0.02em;
+      color: var(--white);
+      line-height: 0.95;
+      position: relative; z-index: 1;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--grey);
+      margin-top: 1.2rem;
+      font-weight: 300;
+      position: relative; z-index: 1;
+    }
+
+    /* ── LAYOUT ── */
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      position: relative; z-index: 1;
+    }
+
+    /* ── PROFILE GRID ── */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .profile-sidebar { position: sticky; top: 6rem; }
+
+    .photo-wrap {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .photo-wrap::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px; right: 12px; bottom: 12px;
+      border: 1px solid rgba(200,146,42,0.3);
+      pointer-events: none;
+    }
+
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -12px; right: -12px; left: 12px; top: 12px;
+      background: rgba(200,146,42,0.05);
+      pointer-events: none;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+      position: relative; z-index: 1;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--steel), var(--navy2));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+
+    .photo-placeholder span {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(200,146,42,0.3);
+    }
+
+    .sidebar-info { display: flex; flex-direction: column; gap: 0; }
+
+    .info-row {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .info-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .info-val {
+      font-size: 0.9rem;
+      color: var(--cream);
+    }
+
+    .info-val a {
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .info-val a:hover { color: var(--gold); }
+
+    /* ── MAIN CONTENT ── */
+    .profile-main {}
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--gold);
+    }
+
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      line-height: 1;
+    }
+
+    .block-divider {
+      border: none;
+      border-top: 1px solid rgba(200,146,42,0.15);
+      margin: 3rem 0;
+    }
+
+    .body-text {
+      font-size: 0.98rem;
+      color: var(--grey);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .body-text strong { color: var(--cream); font-weight: 500; }
+
+    /* ── EXPERTISE GRID ── */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .expertise-item {
+      background: rgba(15,32,64,0.6);
+      border: 1px solid rgba(200,146,42,0.12);
+      padding: 1.2rem 1.4rem;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .expertise-item:hover { border-color: rgba(200,146,42,0.35); }
+
+    .expertise-item::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--gold);
+    }
+
+    .expertise-name {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .expertise-desc {
+      font-size: 0.85rem;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 1.5rem; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(200,146,42,0.08);
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 112px; top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(200,146,42,0.15);
+    }
+
+    .timeline-year {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      padding-top: 0.2rem;
+      text-align: right;
+    }
+
+    .timeline-content {}
+
+    .timeline-role {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-org {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.86rem;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    /* ── SKILLS TAGS ── */
+    .skills-wrap {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,146,42,0.3);
+      padding: 0.3rem 0.75rem;
+      background: rgba(200,146,42,0.05);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(200,146,42,0.12);
+      border-color: rgba(200,146,42,0.5);
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--navy2);
+      border-top: 1px solid rgba(200,146,42,0.1);
+      border-bottom: 1px solid rgba(200,146,42,0.1);
+    }
+
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta-text h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-text p {
+      font-size: 0.92rem;
+      color: var(--grey);
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+
+    .btn-outline {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(200,146,42,0.4);
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050e1a;
+      border-top: 1px solid rgba(200,146,42,0.15);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--grey);
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-hero { padding: 8rem 1.5rem 3rem; }
+      .section-inner { padding: 3rem 1.5rem; }
+      .profile-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .profile-sidebar { position: static; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
+<body>
 
-<body class="bg-gray-50 text-gray-800">
-  <!-- Navbar -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Omoloja Yusuf Oluwasola</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm font-medium">
-          <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-          <li><a href="profile_page.html" class="hover:text-blue-600">Profile</a></li>
-          <li><a href="Bussinness.html" class="hover:text-blue-600">Business</a></li>
-          <li><a href="Training.html" class="hover:text-blue-600">Training</a></li>
-          <li><a href="systems_engineering.html" class="hover:text-blue-600">Systems</a></li>
-          <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
-          <li><a href="Phd.html" class="hover:text-blue-600">PhD</a></li>
-          <li><a href="gallery.html" class="hover:text-blue-600">Gallery</a></li>
-          <li><a href="C:\Users\yomol\OneDrive\Desktop\Desktop Copy all files here\My Website\Pacific_artis.html" class="hover:text-blue-600">Pacific Artis</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">PACIFIC ARTIS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile_page.html" class="active">Profile</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="index.html#ai-agents">AI Agents</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Training.html">Training</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Enquire</a>
+  </nav>
 
-  <!-- Profile Section -->
-  <section class="max-w-4xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
-    <div class="flex flex-col md:flex-row items-start gap-8">
-      <img src="20250508_101054.jpg" alt="Your Photo" class="w-40 h-40 object-cover rounded-full shadow-md mx-auto md:mx-0" />
-      <div>
-        <p class="mb-4">Hello, I’m <strong>Yusuf Oluwasola Omoloja</strong>, a dedicated Reliability Engineer of over 15 years with a strong foundation in reliability centred maintenance and asset management. Over the years, I’ve integrated technology into traditional engineering processes to help industries achieve operational excellence.</p>
-        <p class="mb-4">My expertise spans software development for reliability applications, consultancy in Maintenance ERP systems like SAP and MAXIMO, and research in scalable digital twin solutions. I combine hands-on engineering knowledge with advanced system design skills to solve complex maintenance challenges.</p>
-        <p class="mb-4">Currently, I’m pursuing a PhD focused on creating a hybrid reliability framework that blends edge and cloud technologies in the mining sector.</p>
-        <p>Outside of work, I maintain a predictive maintenance blog where I share my thoughts, insights, and field stories. I also enjoy writing and reflecting on the deeper connection between engineering, systems, and human resilience.</p>
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="page-eyebrow">Professional Profile</div>
+    <h1 class="page-title">YUSUF<br>OLUWASOLA<br>OMOLOJA</h1>
+    <p class="page-subtitle">Reliability Engineer · RCM2 Specialist · AI Agent Developer · PhD Researcher</p>
+  </div>
+
+  <!-- MAIN PROFILE -->
+  <div class="section-inner">
+    <div class="profile-grid">
+
+      <!-- SIDEBAR -->
+      <div class="profile-sidebar fade-up">
+        <div class="photo-wrap">
+          <img
+            src="20250508_101054.jpg"
+            alt="Yusuf Oluwasola Omoloja"
+            class="profile-photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="photo-placeholder" style="display:none;">
+            <span>YO</span>
+          </div>
+        </div>
+
+        <div class="sidebar-info">
+          <div class="info-row">
+            <div class="info-label">Full Name</div>
+            <div class="info-val">Yusuf Oluwasola Omoloja</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Title</div>
+            <div class="info-val">Reliability Engineer &amp; AI Developer</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Experience</div>
+            <div class="info-val">15+ Years</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Methodology</div>
+            <div class="info-val">RCM2 – John Moubray</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Location</div>
+            <div class="info-val">Australia – Mining &amp; Resources</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Research</div>
+            <div class="info-val">PhD – Hybrid Reliability Framework</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Website</div>
+            <div class="info-val">
+              <a href="https://www.brotherstech-eng.com/" target="_blank">Brothers Tech Engineering</a>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Blog</div>
+            <div class="info-val"><a href="blog.html">Predictive Maintenance Blog</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN -->
+      <div class="profile-main">
+
+        <!-- BIO -->
+        <div class="fade-up">
+          <div class="section-label">Biography</div>
+          <h2 class="block-title">ENGINEER. RESEARCHER. BUILDER.</h2>
+
+          <p class="body-text">
+            I am <strong>Yusuf Oluwasola Omoloja</strong>, a reliability engineer with over
+            <strong>15 years of hands-on experience</strong> in maintenance strategy development,
+            asset management systems, and digital transformation for industrial operations.
+            My career has been built at the intersection of rigorous engineering methodology
+            and practical field application — in the environments where reliability decisions
+            have real consequences.
+          </p>
+
+          <p class="body-text">
+            My foundation is <strong>Reliability Centred Maintenance</strong> — specifically
+            John Moubray's RCM2 methodology, which I have applied across mining, processing,
+            and heavy industrial assets. I understand that maintenance is not about doing more —
+            it is about doing the right things, for the right reasons, at the right time.
+            That discipline shapes everything I build.
+          </p>
+
+          <p class="body-text">
+            Over the past year I have combined this engineering foundation with
+            <strong>AI agent development</strong> — building intelligent systems that
+            automate FMEA generation, dynamic risk scoring, and maintenance task management.
+            What previously took experienced engineers days now takes minutes, with the
+            human effort redirected toward validation, judgment, and the knowledge
+            that no document can capture.
+          </p>
+
+          <p class="body-text">
+            Currently pursuing a <strong>PhD focused on scalable hybrid reliability
+            frameworks</strong> that combine edge computing and cloud AI for real-time
+            equipment health monitoring in remote mining environments.
+            Outside of engineering, I write — maintaining a predictive maintenance blog
+            and reflecting on the deeper connections between engineering,
+            systems thinking, and human resilience.
+          </p>
+        </div>
+
+        <hr class="block-divider" />
+
+        <!-- EXPERTISE -->
+        <div class="fade-up">
+          <div class="section-label">Core Expertise</div>
+          <h2 class="block-title">WHAT I KNOW</h2>
+
+          <div class="expertise-grid">
+            <div class="expertise-item">
+              <div class="expertise-name">RCM2 &amp; FMEA</div>
+              <div class="expertise-desc">Moubray methodology, functional failure analysis, consequence categorisation, PM task selection, hidden failure identification</div>
+            </div>
+            <div class="expertise-item">
+              <div class="expertise-name">Predictive Maintenance</div>
+              <div class="expertise-desc">Vibration analysis, oil analysis, thermography, ultrasound, condition monitoring strategy design and implementation</div>
+            </div>
+            <div class="expertise-item">
+              <div class="expertise-name">SAP Plant Maintenance</div>
+              <div class="expertise-desc">Functional location structures, equipment master data, maintenance plans, work order management, KPI reporting</div>
+            </div>
+            <div class="expertise-item">
+              <div class="expertise-name">IBM Maximo</div>
+              <div class="expertise-desc">Asset lifecycle management, PM scheduling, work order workflows, reporting and analytics configuration</div>
+            </div>
+            <div class="expertise-item">
+              <div class="expertise-name">Digital Twin Development</div>
+              <div class="expertise-desc">Physical asset modelling, performance simulation, maintenance planning integration, real-time monitoring dashboards</div>
+            </div>
+            <div class="expertise-item">
+              <div class="expertise-name">AI Agent Development</div>
+              <div class="expertise-desc">Claude API integration, RCM2 decision logic encoding, automated FMEA generation, dynamic risk scoring systems</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="block-divider" />
+
+        <!-- CAREER -->
+        <div class="fade-up">
+          <div class="section-label">Career Journey</div>
+          <h2 class="block-title">EXPERIENCE</h2>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">2024–<br>Present</div>
+              <div class="timeline-content">
+                <div class="timeline-role">AI Agent Developer &amp; Reliability Consultant</div>
+                <div class="timeline-org">Pacific Artis</div>
+                <div class="timeline-desc">
+                  Building AI-powered reliability engineering tools including the RCM2 FMEA Agent,
+                  Dynamic FMEA Engine, and Maintenance Work Instruction Generator.
+                  Consulting to mining and industrial clients on maintenance strategy and digital transformation.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">Current</div>
+              <div class="timeline-content">
+                <div class="timeline-role">PhD Researcher</div>
+                <div class="timeline-org">Mining Equipment Reliability – Australia</div>
+                <div class="timeline-desc">
+                  Researching scalable hybrid reliability frameworks combining edge computing
+                  and cloud AI for real-time equipment health monitoring in the mining sector.
+                  Focus on bridging RCM2 methodology with machine learning and digital twin technologies.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">15+ Years</div>
+              <div class="timeline-content">
+                <div class="timeline-role">Reliability Engineer – Industrial Operations</div>
+                <div class="timeline-org">Mining &amp; Resources Sector</div>
+                <div class="timeline-desc">
+                  Over 15 years of hands-on reliability engineering across mining and heavy industrial
+                  operations. SAP PM and IBM Maximo implementation, predictive maintenance programme
+                  design, RCM2 analysis, and maintenance team training and capability development.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="block-divider" />
+
+        <!-- SKILLS -->
+        <div class="fade-up">
+          <div class="section-label">Technical Skills</div>
+          <h2 class="block-title">TOOLS &amp; TECHNOLOGIES</h2>
+
+          <div class="skills-wrap">
+            <span class="skill-tag">RCM2 – Moubray</span>
+            <span class="skill-tag">FMEA</span>
+            <span class="skill-tag">SAP PM</span>
+            <span class="skill-tag">IBM Maximo</span>
+            <span class="skill-tag">Digital Twin</span>
+            <span class="skill-tag">Vibration Analysis</span>
+            <span class="skill-tag">Oil Analysis</span>
+            <span class="skill-tag">Thermography</span>
+            <span class="skill-tag">Ultrasound NDT</span>
+            <span class="skill-tag">Predictive Maintenance</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Claude API</span>
+            <span class="skill-tag">AI Agent Development</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Edge Computing</span>
+            <span class="skill-tag">IoT</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">PyCharm</span>
+            <span class="skill-tag">HTML / CSS / JS</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Risk Matrix</span>
+            <span class="skill-tag">Asset Management</span>
+            <span class="skill-tag">Failure Analysis</span>
+            <span class="skill-tag">Maintenance Strategy</span>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-6 mt-10 text-sm">
-   <p>&copy; 2025 Yusuf Oluwasola Omoloja. All rights reserved.</p>
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3>READY TO WORK TOGETHER?</h3>
+        <p>Consulting, AI agent development, RCM2 analysis, or SAP PM implementation.</p>
+      </div>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="Bussinness.html" class="btn-primary">View Services</a>
+        <a href="index.html#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </div>
 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">© 2026 Yusuf Oluwasola Omoloja · Pacific Artis · All Rights Reserved</div>
+    <div class="footer-logo">PACIFIC ARTIS</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Bussinness.html">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Phd.html">PhD</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
-
 </html>
-
